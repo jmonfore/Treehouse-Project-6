@@ -6,6 +6,7 @@ let lives = document.getElementsByClassName("tries");
 
 let incorrectGuesses = 0;
 
+
 // 5 different phrases
 const phrases = [
     "You Can't Teach an Old Dog New Tricks",
@@ -18,7 +19,7 @@ const phrases = [
 
 // return a random phrase from an array
 function getRandomPhraseAsArray (arr) {
-    
+
 }
 
 // adds the letters of a string to the display
@@ -38,8 +39,8 @@ const checkwin = () => {
 
 // listen for the start game button to be pressed
 startButton.addEventListener('click',  () => {
-    let screenOverlay = document.getElementById("overlay");
-    screenOverlay.style.display = 'none';
+    let overlay = document.getElementById("overlay");
+    overlay.style.display = 'none';
 }); 
 
 // listen for the onscreen keyboard to be clicked
