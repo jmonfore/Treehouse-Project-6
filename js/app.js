@@ -1,10 +1,8 @@
 const qwerty = document.getElementById("qwerty");
 const phrase = document.getElementById("phrase");
 const startButton = document.getElementsByClassName("btn__reset")[0];
-
 let lives = document.getElementsByClassName("tries");
-
-let incorrectGuesses = 0;
+let incorrectGuess = 0;
 
 
 // 5 different phrases
@@ -19,17 +17,25 @@ const phrases = [
 
 // return a random phrase from an array
 function getRandomPhraseAsArray (arr) {
+  return arr[Math.floor(Math.random() * arr.length)];
+} 
+getRandomPhraseAsArray(phrases);
 
-}
 
 // adds the letters of a string to the display
-const addPhraseToDisplay = arr => {
+function addPhraseToDisplay(arr) {
+    for (let i = 0; i < arr.length; i += 1) {
+      let listItem = document.createElement("li");
+     
+    }
+  }
+  const phrasesArray = getRandomPhraseAsArray(phrases);
 
-}
+  addPhraseToDisplay(phrasesArray);
 
 // check if a letter is in the place
-const checkLetter = button => {
-
+function checkLetter() {
+   
 }
 
 // check if the game has been won or lost 
@@ -44,7 +50,7 @@ startButton.addEventListener('click',  () => {
 }); 
 
 // listen for the onscreen keyboard to be clicked
-qwerty.addEventListener('click', e => {
+qwerty.addEventListener('click', _e => {
 
 });
 
