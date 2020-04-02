@@ -23,18 +23,30 @@ getRandomPhraseAsArray(phrases);
 
 
 // adds the letters of a string to the display
+
+const phraseList = phrase.querySelector('ul');
+
 function addPhraseToDisplay(arr) {
-    for (let i = 0; i < arr.length; i += 1) {
-      let listItem = document.createElement("li");
-     
+  for (let i = 0; i < arr.length; i += 1) {
+    let listItem = document.createElement("li");
+    listItem.textContent = arr[i];
+    if (arr[i] !== ' ') {
+      listItem.className = 'letter';
+    } else {
+      listItem.className = 'space';
     }
+    phraseList.appendChild(listItem);
   }
+}
+
   const phrasesArray = getRandomPhraseAsArray(phrases);
 
   addPhraseToDisplay(phrasesArray);
 
+
 // check if a letter is in the place
-function checkLetter() {
+function checkLetter(letter) {
+  let letter = document.querySelectorAll('.letter'),
    
 }
 
@@ -50,7 +62,7 @@ startButton.addEventListener('click',  () => {
 }); 
 
 // listen for the onscreen keyboard to be clicked
-qwerty.addEventListener('click', _e => {
+qwerty.addEventListener('click', e => {
 
 });
 
