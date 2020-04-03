@@ -46,8 +46,18 @@ function addPhraseToDisplay(arr) {
 
 // check if a letter is in the place
 function checkLetter(letter) {
-  let letter = document.querySelectorAll('.letter'),
-   
+  let letters = document.querySelectorAll('.letter');
+  console.log(letter);
+  matchLetter = 0;
+  let checkLetter = item.innerHTML.toLowerCase();
+  if(checkLetter === letter) {
+    item.className += 'show';
+    matchLetter += 1;
+  }
+  if (matchLetter === 0) {
+    foundLetter = null;
+    matchLetter = 0;
+  }
 }
 
 // check if the game has been won or lost 
@@ -63,7 +73,7 @@ startButton.addEventListener('click',  () => {
 
 // listen for the onscreen keyboard to be clicked
 qwerty.addEventListener('click', e => {
-
+  checkLetter(e.target.textContent.toLowerCase());
 });
 
 
