@@ -1,8 +1,12 @@
-const qwerty = document.getElementById("qwerty");
-const phrase = document.getElementById("phrase");
-const startButton = document.getElementsByClassName("btn__reset")[0];
-let lives = document.getElementsByClassName("tries");
-let incorrectGuess = 0;
+const keyboard = document.getElementById('qwerty');
+const phrase = document.getElementById('phrase');
+const startButton = document.getElementsByClassName('btn__reset')[0];
+let lives = document.getElementsByClassName('tries');
+const letters = document.querySelectorAll('.letter');
+const misses = document.querySelector('.misses');
+let missed = 0;
+
+
 
 
 // 5 different phrases
@@ -45,20 +49,18 @@ function addPhraseToDisplay(arr) {
 
 
 // check if a letter is in the place
-function checkLetter(letter) {
-  let letters = document.querySelectorAll('.letter');
-  console.log(letter);
-  matchLetter = 0;
-  let checkLetter = item.innerHTML.toLowerCase();
-  if(checkLetter === letter) {
-    item.className += 'show';
-    matchLetter += 1;
-  }
-  if (matchLetter === 0) {
-    foundLetter = null;
-    matchLetter = 0;
-  }
-}
+const checkLetter = button => {
+  let matched = null;
+
+  letters.forEach(letter => {
+    if (button === letter.textContent.toLowerCase()) {
+      letter.classList.add('show');
+      matched = true;
+    }
+  });
+
+  return matched;
+};
 
 // check if the game has been won or lost 
 const checkwin = () => {
@@ -72,8 +74,16 @@ startButton.addEventListener('click',  () => {
 }); 
 
 // listen for the onscreen keyboard to be clicked
-qwerty.addEventListener('click', e => {
-  checkLetter(e.target.textContent.toLowerCase());
+keyboard.addEventListener('click', event => {
+  if (event.target.tagName === "BUTTON") {
+    event.target.className = 'chosen';
+    event.target.disabled = true;
+    const match = checkLetter(event.target.textContent.toLowerCase());
+    if (!match) {
+      missed++;
+      misses.textContent = missed;
+    }
+  }
 });
 
 
