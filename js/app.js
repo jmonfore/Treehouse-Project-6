@@ -2,7 +2,6 @@ const keyboard = document.getElementById('qwerty');
 const phrase = document.getElementById('phrase');
 const startButton = document.getElementsByClassName('btn__reset')[0];
 let lives = document.getElementsByClassName('tries');
-const letters = document.querySelectorAll('.letter');
 const misses = document.querySelector('.misses');
 let missed = 0;
 
@@ -49,6 +48,8 @@ function addPhraseToDisplay(arr) {
 
 
 // check if a letter is in the place
+const letters = document.querySelectorAll('.letter');
+
 const checkLetter = button => {
   let matched = null;
 
@@ -81,7 +82,6 @@ keyboard.addEventListener('click', event => {
     const match = checkLetter(event.target.textContent.toLowerCase());
     if (!match) {
       missed++;
-      misses.textContent = missed;
     }
   }
 });
