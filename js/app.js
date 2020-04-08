@@ -6,12 +6,10 @@ const misses = document.querySelector('.misses');
 let missed = 0;
 
 
-
-
 // 5 different phrases
 const phrases = [
-    "You Can't Teach an Old Dog New Tricks",
-    "There's No I in Team",
+    "You Cant Teach an Old Dog New Tricks",
+    "Theres No I in Team",
     "Wake Up Call",
     "Quick and Dirty",
     "What Goes Up Must Come Down"
@@ -65,7 +63,19 @@ const checkLetter = button => {
 
 // check if the game has been won or lost 
 const checkwin = () => {
+  let numOfLetters = document.querySelectorAll('.letter').length;
+  let numOfCorrectLetters = document.querySelectorAll('.show').length;
+  let overlay = document.getElementById("overlay");
+  if (numOfCorrectLetters === numOfLetters) {
+    overlay.className = 'win';
+    overlay.textContent = 'Congratulation You Won!'
+  }
+  else if (missed >= 5) {
+    overlay.className = 'lose';
+    overlay.textContent = 'Sorry You Lost!'
 
+  }
+  startScreen.style.display = 'flex'
 }
 
 // listen for the start game button to be pressed
@@ -82,6 +92,8 @@ keyboard.addEventListener('click', event => {
     const match = checkLetter(event.target.textContent.toLowerCase());
     if (!match) {
       missed++;
+      let lifeGone = lives[missed];
+      lifeGone.style = 'display: none;';
     }
   }
 });
