@@ -68,14 +68,14 @@ const checkwin = () => {
   let overlay = document.getElementById("overlay");
   if (numOfCorrectLetters === numOfLetters) {
     overlay.className = 'win';
-    overlay.textContent = 'Congratulation You Won!'
+    overlay.textContent = 'Congratulation You Won! 😃'
+    overlay.style.display = 'flex';
   }
   else if (missed >= 5) {
     overlay.className = 'lose';
-    overlay.textContent = 'Sorry You Lost!'
-
+    overlay.textContent = 'Sorry You Lost! 😔'
+    overlay.style.display = 'flex';
   }
-  startScreen.style.display = 'flex'
 }
 
 // listen for the start game button to be pressed
@@ -91,10 +91,11 @@ keyboard.addEventListener('click', event => {
     event.target.disabled = true;
     const match = checkLetter(event.target.textContent.toLowerCase());
     if (!match) {
-      missed++;
       let lifeGone = lives[missed];
-      lifeGone.style = 'display: none;';
+      lifeGone.style = 'display: none';
+      missed++;
     }
+    checkwin();
   }
 });
 
