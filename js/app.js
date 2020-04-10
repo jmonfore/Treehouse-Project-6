@@ -92,7 +92,7 @@ keyboard.addEventListener('click', event => {
     const match = checkLetter(event.target.textContent.toLowerCase());
     if (!match) {
       let lifeGone = lives[missed];
-      lifeGone.style = 'display: none';
+      lifeGone.children[0].src = "images/lostHeart.png";
       missed++;
     }
     checkwin();
