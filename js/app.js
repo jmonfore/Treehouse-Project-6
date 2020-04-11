@@ -65,23 +65,25 @@ const checkLetter = button => {
 const checkwin = () => {
   let numOfLetters = document.querySelectorAll('.letter').length;
   let numOfCorrectLetters = document.querySelectorAll('.show').length;
-  let overlay = document.getElementById("overlay");
+  let startOverlay = document.getElementById("overlay");
   if (numOfCorrectLetters === numOfLetters) {
-    overlay.className = 'win';
-    overlay.textContent = 'Congratulation You Won! 😃'
-    overlay.style.display = 'flex';
+    startOverlay.className = 'win';
+    overlay.display = 'Congratulation You Won! 😃'
+    startOverlay.style.display = 'flex';
+    startButton.textContent = 'Play Again'
   }
   else if (missed >= 5) {
-    overlay.className = 'lose';
-    overlay.textContent = 'Sorry You Lost! 😔'
-    overlay.style.display = 'flex';
+    startOverlay.className = 'lose';
+    overlay.display = 'Sorry You Lost! 😔'
+    startOverlay.style.display = 'flex';
+    startButton.textContent = 'Play Again'
   }
 }
 
 // listen for the start game button to be pressed
 startButton.addEventListener('click',  () => {
-    let overlay = document.getElementById("overlay");
-    overlay.style.display = 'none';
+    let startOverlay = document.getElementById("overlay");
+    startOverlay.style.display = 'none';
 }); 
 
 // listen for the onscreen keyboard to be clicked
