@@ -1,6 +1,6 @@
 const keyboard = document.getElementById('qwerty');
 const phrase = document.getElementById('phrase');
-const startButton = document.getElementsByClassName('btn__reset')[0];
+const startButton = document.getElementsByClassName('overlay')[0];
 let lives = document.getElementsByClassName('tries');
 const misses = document.querySelector('.misses');
 let missed = 0;
@@ -65,25 +65,23 @@ const checkLetter = button => {
 const checkwin = () => {
   let numOfLetters = document.querySelectorAll('.letter').length;
   let numOfCorrectLetters = document.querySelectorAll('.show').length;
-  let startOverlay = document.getElementById("overlay");
+  let overlay = document.getElementById("overlay");
   if (numOfCorrectLetters === numOfLetters) {
-    startOverlay.className = 'win';
-    overlay.display = 'Congratulation You Won! 😃'
-    startOverlay.style.display = 'flex';
-    startButton.textContent = 'Play Again'
+    overlay.className = 'win';
+    overlay.textContent = 'Congratulation You Won! 😃'
+    overlay.style.display = 'flex';
   }
   else if (missed >= 5) {
-    startOverlay.className = 'lose';
-    overlay.display = 'Sorry You Lost! 😔'
-    startOverlay.style.display = 'flex';
-    startButton.textContent = 'Play Again'
+    overlay.className = 'lose';
+    overlay.textContent = 'Sorry You Lost! 😔'
+    overlay.style.display = 'flex';
   }
 }
 
 // listen for the start game button to be pressed
 startButton.addEventListener('click',  () => {
-    let startOverlay = document.getElementById("overlay");
-    startOverlay.style.display = 'none';
+  let overlay = document.getElementById("overlay");
+  overlay.style.display = 'none';
 }); 
 
 // listen for the onscreen keyboard to be clicked
