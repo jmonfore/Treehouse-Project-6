@@ -1,6 +1,6 @@
 const keyboard = document.getElementById('qwerty');
 const phrase = document.getElementById('phrase');
-const startButton = document.getElementsByClassName('overlay')[0];
+const startButton = document.querySelector('.btn__reset');
 let lives = document.getElementsByClassName('tries');
 const misses = document.querySelector('.misses');
 let missed = 0;
@@ -82,7 +82,7 @@ const checkwin = () => {
 startButton.addEventListener('click',  () => {
   let overlay = document.getElementById("overlay");
   overlay.style.display = 'none';
-}); 
+});
 
 // listen for the onscreen keyboard to be clicked
 keyboard.addEventListener('click', event => {
